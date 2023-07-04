@@ -108,6 +108,49 @@ def relationship_status(from_member, to_member, social_graph):
 relationship_status("@joaquin", "@chums", social_graph)
 
 
+board1 = [
+['X','X','O'],
+['O','X','O'],
+['O','','X'],
+]
+
+board2 = [
+['X','X','O'],
+['O','X','O'],
+['','O','X'],
+]
+
+board3 = [
+['O','X','O'],
+['','O','X'],
+['X','X','O'],
+]
+
+board4 = [
+['X','X','X'],
+['O','X','O'],
+['O','','O'],
+]
+
+board5 = [
+['X','X','O'],
+['O','X','O'],
+['X','','O'],
+]
+
+board6 = [
+['X','X','O'],
+['O','X','O'],
+['X','',''],
+]
+
+board7 = [
+['X','X','O',''],
+['O','X','O','O'],
+['X','','','O'],
+['O','X','','']
+]
+
 def tic_tac_toe(board):
     '''Tic Tac Toe.
     25 points.
@@ -134,7 +177,52 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+    try:
+        win1 = list('X' * len(board))
+        win2 = list('O' * len(board))
+        check_diag1 = []
+        check_diag2 = []
+        i = 0
+        j = 0
+        k = len(board)-1
+        
+        for row in board:
+            if row == win1:
+                result = 'X'
+            elif row == win2:
+                result = 'O'
+
+        for row in board:
+            for h in range(len(row)):
+                check_col = [row[h] for row in board]
+                if check_col == win1:
+                    result = 'X'
+                elif check_col == win2:
+                    result = 'O'
+                
+        while i < len(board):
+            check_diag1.append(board[i][i])
+            i += 1
+            if check_diag1 == win1:
+                result = 'X'
+            elif check_diag1 == win2:
+                result = 'O'
+        
+        while j < len(board) and k >= 0:
+            check_diag2.append(board[j][k])
+            j += 1
+            k -= 1
+            if check_diag2 == win1:
+                result = 'X'
+            elif check_diag2 == win2:
+                result = 'O'
+    
+        return result
+    
+    except:
+        return 'NO WINNER'
+
+tic_tac_toe(board1)
 
 
 route_map = {
